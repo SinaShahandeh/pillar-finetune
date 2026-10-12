@@ -48,7 +48,7 @@ model.evaluate(inputs_csv_path="/path/to/csv")
 model.evaluate(rve_sample="/path/to/rve/output")
 ```
 
-Note that the model expects the input to be an Axial LDCT, where the first frame is of the abdominal region and the last frame is along the clavicles.
+Note that the model expects the input to be an axial LDCT whose slices run **superior to inferior**: the first frame is near the clavicles and the last frame is in the upper abdomen. This is the order RAVE produces for the RVE path (it keeps the DICOM InstanceNumber order, which scanners almost always number from the top), and it is what `examples/rve_example` contains. If your volumes come out inferior to superior, reverse the depth axis before calling `predict`/`evaluate`.
 
 
 ## Fine-tuning Pillar0 on NLST Dataset
